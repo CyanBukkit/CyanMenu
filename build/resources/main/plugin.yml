@@ -1,0 +1,10 @@
+name: CyanMenu
+version: 2.7-bate
+main: cn.cyanbukkit.cyanmenu.cyanlib.launcher.CyanPluginLauncher
+description: CyanNextMenu
+authors:
+  - CyanBukkit
+website: https://cyanbukkit.cn
+prefix: §bCyanMenu§f
+softdepend:
+  - PlaceholderAPI
