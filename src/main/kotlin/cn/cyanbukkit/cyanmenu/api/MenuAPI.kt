@@ -1,6 +1,5 @@
 package cn.cyanbukkit.cyanmenu.api
 
-import cn.cyanbukkit.cyanmenu.command.CreateListener
 import cn.cyanbukkit.cyanmenu.command.OpenListener.openMenu
 import cn.cyanbukkit.cyanmenu.command.OpenListener.slotData
 import org.bukkit.configuration.file.YamlConfiguration
@@ -16,7 +15,7 @@ object MenuAPI {
     }
 
     fun Player.isOpenCyanMenu(): Boolean {
-        return slotData.contains(this) || CreateListener.editingAction.containsKey(this)
+        return slotData.contains(this)
     }
 
 }

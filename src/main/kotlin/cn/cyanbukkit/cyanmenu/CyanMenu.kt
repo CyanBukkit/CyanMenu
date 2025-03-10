@@ -1,7 +1,5 @@
 package cn.cyanbukkit.cyanmenu
 
-import cn.cyanbukkit.cyanmenu.command.CreateListener
-import cn.cyanbukkit.cyanmenu.command.EditorListener
 import cn.cyanbukkit.cyanmenu.command.OpenListener
 import cn.cyanbukkit.cyanmenu.cyanlib.launcher.CyanPluginLauncher.cyanPlugin
 import cn.cyanbukkit.cyanmenu.data.linkMySQL
@@ -78,9 +76,7 @@ object CyanMenu  {
         commandGroup = YamlConfiguration.loadConfiguration(command)
         mysqlConfig = YamlConfiguration.loadConfiguration(mysqlFile)
         // 注册监听
-        cyanPlugin.server.pluginManager.registerEvents(CreateListener, cyanPlugin)
         cyanPlugin.server.pluginManager.registerEvents(OpenListener, cyanPlugin)
-        cyanPlugin.server.pluginManager.registerEvents(EditorListener, cyanPlugin)
         // qwq
         if (mysqlConfig.getBoolean("enable")) {
              linkMySQL()

@@ -1,8 +1,6 @@
 package cn.cyanbukkit.cyanmenu.command
 
 import cn.cyanbukkit.cyanmenu.CyanMenu
-import cn.cyanbukkit.cyanmenu.command.CreateListener.openDefaultMenu
-import cn.cyanbukkit.cyanmenu.command.EditorListener.openThisMenu
 import cn.cyanbukkit.cyanmenu.command.OpenListener.openMenu
 import cn.cyanbukkit.cyanmenu.core.Handle.toStr
 import cn.cyanbukkit.cyanmenu.cyanlib.launcher.CyanPluginLauncher
@@ -114,13 +112,17 @@ class CMenuCommand : Command(
                             sender.sendMessage("§c参数错误 不是9的倍数")
                         }
                         if (size != null) {
-                            sender.openDefaultMenu(args[1], size)
+                            EditorListener(true).editorThisMenu(
+                                sender, null,args[1], size
+                                                                )
                             sender.sendMessage("§a创建成功")
                         } else {
                             sender.sendMessage("§c参数错误")
                         }
                     } else {
-                        sender.openDefaultMenu()
+                        EditorListener(false).editorThisMenu(
+                            sender, null
+                                                            )
                         sender.sendMessage("§a创建随机执行菜单")
                     }
                 }
@@ -154,10 +156,12 @@ class CMenuCommand : Command(
                         }
 
                         if (CyanMenu.menuFolder.listFiles()?.find { it.name == name } == null) {
-                            sender.sendMessage("§c菜单不存在这里只能编辑本地的菜单哦~如果网页自己去网页编辑去")
+                            sender.sendMessage("§c菜单不存在这里只能编辑本地的菜单哦~如果网页自己去网页编辑去,如果是数据库那请你自己转下base64放本地里我才能编辑哦~")
                             return true
                         } else {
-                            sender.openThisMenu(CyanMenu.menuFolder.listFiles()?.find { it.name == name }!!)
+                            EditorListener(false).editorThisMenu(
+                                sender, CyanMenu.menuFolder.listFiles()?.find { it.name == name }!!
+                                                                )
                         }
                     } else {
                         sender.sendMessage("§c参数错误")
