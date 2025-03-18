@@ -1,4 +1,4 @@
-version = "2.7-bate"
+version = "2.8"
 
 plugins {
     kotlin("jvm") version "1.9.20"

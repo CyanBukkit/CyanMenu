@@ -1,15 +1,21 @@
 package cn.cyanbukkit.cyanmenu.core
 
 import cn.cyanbukkit.cyanmenu.cyanlib.launcher.CyanPluginLauncher
+import com.mojang.authlib.GameProfile
+import com.mojang.authlib.properties.Property
 import me.clip.placeholderapi.PlaceholderAPI
 import org.bukkit.Bukkit
+import org.bukkit.ChatColor
+import org.bukkit.Material
 import org.bukkit.configuration.file.YamlConfiguration
 import org.bukkit.entity.Player
 import org.bukkit.inventory.ItemStack
+import org.bukkit.inventory.meta.SkullMeta
 import org.bukkit.plugin.Plugin
 import java.io.ByteArrayOutputStream
 import java.io.DataOutputStream
 import java.io.IOException
+import java.util.*
 
 object Handle {
 
@@ -160,6 +166,24 @@ object Handle {
     }
 
 
+    fun ItemStack.getCustomSkull(base64: String): ItemStack {
+        val skull = itemMeta as SkullMeta
+        val profile = GameProfile(UUID.randomUUID(), null)
+        profile.properties.put("textures", Property("textures", base64))
+        try {
+            val profileField = skull.javaClass.getDeclaredField("profile")
+            profileField.isAccessible = true
+            profileField[skull] = profile
+        } catch (e: IllegalAccessException) {
+            e.printStackTrace()
+        } catch (e: NoSuchFieldException) {
+            e.printStackTrace()
+        }
+        itemMeta = skull
+        return this
+    }
+
+
     fun String.toItemStack(p: Player): ItemStack {
         val aConfig = YamlConfiguration()
         aConfig.loadFromString(this)
@@ -175,8 +199,9 @@ object Handle {
             }
             this.itemMeta = met
             // 如果是头颅 获取player的皮肤
-            if (this.type.name.contains("SKULL") && (this.itemMeta!!.displayName?: "").contains("个人") ) {
-                val skullMeta = this.itemMeta as org.bukkit.inventory.meta.SkullMeta
+            if (aConfig.contains("isplayer")) {
+                // 有两个类型一个是PLAYER 是玩家 BASE64
+                val skullMeta = this.itemMeta as SkullMeta
                 skullMeta.owner = p.name
                 this.itemMeta = skullMeta
             }

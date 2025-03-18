@@ -120,7 +120,7 @@ class CMenuCommand : Command(
                             sender.sendMessage("§c参数错误")
                         }
                     } else {
-                        EditorListener(false).editorThisMenu(
+                        EditorListener(true).editorThisMenu(
                             sender, null
                                                             )
                         sender.sendMessage("§a创建随机执行菜单")
