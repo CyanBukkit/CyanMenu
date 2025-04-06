@@ -71,28 +71,48 @@ class EditorListener(
                     continue
                 }
                 Bukkit.getConsoleSender().sendMessage("§a保存物品....${slot}:${item.toStr()}")
+                // 这是强制覆盖已由设置的
                 menuConfig.set("Item.$slot.ItemStackCompiler", item.toStr())
-                menuConfig.set("Item.$slot.PermissionShow", "")
-                menuConfig.set("Item.$slot.RightClick", mutableListOf(
-                    "op: say op强制执行",
-                    "console: say 剩余看的教程"
-                ))
-                menuConfig.set("Item.$slot.LeftClick", mutableListOf(
-                    "op: say op强制执行",
-                    "console: say 剩余看的教程"
-                ))
-                menuConfig.set("Item.$slot.MiddleClick", mutableListOf(
-                    "op: say op强制执行",
-                    "console: say 剩余看的教程"
-                ))
-                menuConfig.set("Item.$slot.ShiftRightClick", mutableListOf(
-                    "op: say op强制执行",
-                    "console: say 剩余看的教程"
-                ))
-                menuConfig.set("Item.$slot.ShiftLeftClick", mutableListOf(
-                    "op: say op强制执行",
-                    "console: say 剩余看的教程"
-                ))
+                if (!menuConfig.contains("Item.$slot.RightClick")) {
+                    menuConfig.set(
+                        "Item.$slot.RightClick", mutableListOf(
+                            "op: say op强制执行",
+                            "console: say 剩余看的教程"
+                                         )
+                                  )
+                }
+                if (!menuConfig.contains("Item.$slot.LeftClick")) {
+                    menuConfig.set(
+                        "Item.$slot.LeftClick", mutableListOf(
+                            "op: say op强制执行",
+                            "console: say 剩余看的教程"
+                                                             )
+                                  )
+                }
+                if (!menuConfig.contains("Item.$slot.MiddleClick")) {
+                    menuConfig.set(
+                        "Item.$slot.MiddleClick", mutableListOf(
+                            "op: say op强制执行",
+                            "console: say 剩余看的教程"
+                                                               )
+                                  )
+                }
+                if (!menuConfig.contains("Item.$slot.ShiftRightClick")) {
+                    menuConfig.set(
+                        "Item.$slot.ShiftRightClick", mutableListOf(
+                            "op: say op强制执行",
+                            "console: say 剩余看的教程"
+                                                                   )
+                                  )
+                }
+                if (!menuConfig.contains("Item.$slot.ShiftLeftClick")) {
+                    menuConfig.set(
+                        "Item.$slot.ShiftLeftClick", mutableListOf(
+                            "op: say op强制执行",
+                            "console: say 剩余看的教程"
+                                                                  )
+                                  )
+                }
             }
             menuConfig.save(targetFile)
             p.sendMessage("§a创建成功 耗时${System.currentTimeMillis() - time}ms")

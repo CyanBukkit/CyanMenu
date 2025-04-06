@@ -138,7 +138,9 @@ object OpenListener : Listener {
             if (slotData.containsKey(p)) {
                 val data = slotData[p]!!
                 data.forEach { (_, u) ->
-                    u.task.cancel()
+                    try {
+                        u.task.cancel()
+                    } catch (_: Exception) { }
                 }
                 slotData.remove(p)
                 System.gc()
