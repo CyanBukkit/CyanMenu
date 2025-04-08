@@ -6,7 +6,7 @@ plugins {
 }
 
 repositories {
-    maven("https://nexus.cyanbukkit.cn/repository/maven-public")
+    maven("https://lanternmc-maven.pkg.coding.net/repository/cyanbukkit/public")
 }
 
 

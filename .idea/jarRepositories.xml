@@ -16,5 +16,25 @@
       <option name="name" value="maven" />
       <option name="url" value="https://nexus.cyanbukkit.cn/repository/maven-public" />
     </remote-repository>
+    <remote-repository>
+      <option name="id" value="maven" />
+      <option name="name" value="maven" />
+      <option name="url" value="https://maven.cyanbukkit.cn" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="maven" />
+      <option name="name" value="maven" />
+      <option name="url" value="https://lanternmc-maven.pkg.coding.net/repository/dev/public" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="maven" />
+      <option name="name" value="maven" />
+      <option name="url" value="https://lanternmc.coding.net/public-artifacts/dev/public/packages" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="maven" />
+      <option name="name" value="maven" />
+      <option name="url" value="https://lanternmc-maven.pkg.coding.net/repository/cyanbukkit/public" />
+    </remote-repository>
   </component>
 </project>
