@@ -151,9 +151,24 @@ object Handle {
         }
     }
 
+    // 将物品转换为字符串
     fun ItemStack.toStr(): String { 
         val aConfig = YamlConfiguration()
-        aConfig.set("item", this)
+        aConfig.set("item", this.apply {
+            val mate = this.itemMeta
+            if (!this.hasItemMeta()) {
+                this.itemMeta = mate
+            }
+            if (!mate.hasLore()) {
+                val lore = mutableListOf<String>()
+                lore.add("自己去配置文件改或者删但是编辑时是空的你还会见到这句话")
+                mate.lore = lore
+            }
+            if (!mate.hasDisplayName()) {
+                mate.displayName = "自己去配置文件改或者删但是编辑时是空的你还会见到这句话"
+            }
+            this.itemMeta = mate
+        })
         return aConfig.saveToString()
     }
 
