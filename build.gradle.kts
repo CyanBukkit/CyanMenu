@@ -6,7 +6,14 @@ plugins {
 }
 
 repositories {
-    maven("https://lanternmc-maven.pkg.coding.net/repository/cyanbukkit/public")
+    maven("https://maven.aliyun.com/repository/public") {
+        //加载失败跳过这个站点
+        content {
+            excludeGroup("org.spigotmc") //排除spigot
+        }
+    }
+    maven("https://nexus.cyanbukkit.cn/repository/maven-public/")
+    maven("https://maven.elmakers.com/repository")
 }
 
 
