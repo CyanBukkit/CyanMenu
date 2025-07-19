@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/CyanMenu.main.iml" filepath="$PROJECT_DIR$/.idea/modules/CyanMenu.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/CyanMenu.iml" filepath="$PROJECT_DIR$/.idea/CyanMenu.iml" />
     </modules>
   </component>
 </project>
